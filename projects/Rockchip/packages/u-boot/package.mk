@@ -17,7 +17,7 @@ case ${DEVICE} in
     PKG_URL="${PKG_SITE}/rk35xx-uboot/archive/${PKG_VERSION}.tar.gz"
   ;;
   RK3566-BSP*)
-    PKG_URL="${PKG_SITE}/rk356x-uboot.git"
+    PKG_URL="https://github.com/alhumbra/rk356x-uboot.git"
     PKG_VERSION="97c658238f7ccd436fbdede451bfd7488514a5c8"
   ;;
   RK356*)

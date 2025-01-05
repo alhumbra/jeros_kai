@@ -6,7 +6,7 @@ PKG_MAJOR="4.49"
 PKG_MINOR=".1"
 PKG_LICENSE="OFL1_1"
 PKG_SITE="https://terminus-font.sourceforge.net/"
-PKG_URL="https://downloads.sourceforge.net/project/${PKG_NAME}/${PKG_NAME}-${PKG_MAJOR}/${PKG_NAME}-${PKG_MAJOR}${PKG_MINOR}.tar.gz"
+PKG_URL="https://jaist.dl.sourceforge.net/project/terminus-font/terminus-font-4.49/terminus-font-4.49.1.tar.gz"
 
 PKG_DEPENDS_INIT="toolchain Python3:host"
 PKG_DEPENDS_TARGET="toolchain Python3"

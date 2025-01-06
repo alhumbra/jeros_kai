@@ -1,3 +1,9 @@
+RGB10 MAX3 is not ARKOS compliant.
+
+I intend to add Geolith with JELOS as a BSP (work in progress).
+
+There is currently a bug in the Geolith-lr build where it stops when trying to build Windows binaries.
+
 <img src="https://raw.githubusercontent.com/JustEnoughLinuxOS/distribution/dev/distributions/JELOS/logos/jelos-logo.png" width=192>
 
 ---

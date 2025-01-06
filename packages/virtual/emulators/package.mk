@@ -55,7 +55,7 @@ case "${DEVICE}" in
     [ "${ENABLE_32BIT}" == "true" ] && EMUS_32BIT="box86 desmume-lr gpsp-lr pcsx_rearmed-lr"
     PKG_DEPENDS_TARGET+=" common-shaders glsl-shaders mupen64plus-sa scummvmsa box64 portmaster"
     PKG_EMUS+=" amiberry drastic-sa yabasanshiro-sa"
-    LIBRETRO_CORES+=" uae4arm flycast-lr geolith-lr"
+    LIBRETRO_CORES+=" geolith-lr uae4arm flycast-lr"
     PKG_RETROARCH+=" retropie-shaders"
   ;;
   S922X*)

@@ -1,6 +1,10 @@
-RGB10 MAX3 is not ARKOS compliant.
+ArkOS does not work with rgb10 max3, so the final version of JELOS was modified instead.
 
-RK3556 ONLY.
+lastest rk3566 BSP build.
+
+add Geolith Emulator and Update Retroarch.
+
+RK3556 device ONLY.
 
 <img src="https://raw.githubusercontent.com/JustEnoughLinuxOS/distribution/dev/distributions/JELOS/logos/jelos-logo.png" width=192>
 

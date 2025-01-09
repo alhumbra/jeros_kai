@@ -12,6 +12,7 @@ ROM_DIR="/storage/roms/saturn/yabasanshiro"
 CONFIG_DIR="/storage/.config/yabasanshiro"
 SOURCE_DIR="/usr/config/yabasanshiro"
 BIOS_BACKUP="/storage/roms/bios/yabasanshiro"
+SAVESTATE_DIR="/storage/roms/savestates/saturn/yabasanshiro/"
 
 if [ ! -d "${ROM_DIR}" ]
 then
@@ -28,11 +29,21 @@ then
   mkdir -p "${CONFIG_DIR}"
 fi
 
+if [ ! -d "${SAVESTATE_DIR}" ]
+then
+  mkdir -p "${SAVESTATE_DIR}"
+fi
+
 if [ ! -e "${CONFIG_DIR}/input.cfg" ]
 then
   rm -f ${CONFIG_DIR}/keymapv2.json
   GAMEPAD="'$(grep -b4 js0 /proc/bus/input/devices | awk 'BEGIN {FS="\""}; /Name/ {printf $2}')'"
   GAMEPADCONFIG=$(xmlstarlet sel -t -c "//inputList/inputConfig[@deviceName=${GAMEPAD}]" -n /storage/.emulationstation/es_input.cfg)
+
+  MAPPING_FILE="/usr/config/yabasanshiro/devices/keymapv2_$(eval echo $GAMEPAD).json"
+  if [ -e "${MAPPING_FILE}" ]; then
+    cp ${MAPPING_FILE} ${CONFIG_DIR}/keymapv2.json
+  fi
 
   if [ ! -z "${GAMEPADCONFIG}" ]
   then
@@ -47,10 +58,11 @@ fi
 
 BIOS=""
 GAME=$(echo "${1}"| sed "s#^/.*/##")
-USE_BIOS=$(get_setting use_hlebios saturn "${GAME}")
+PLATFORM=$(echo "${2}"| sed "s#^/.*/##")
+USE_BIOS=$(get_setting use_hlebios "${PLATFORM}" "${GAME}")
 if [ ! "${USE_BIOS}" = 1 ]
 then
-  USE_BIOS=$(get_setting use_hlebios saturn)
+  USE_BIOS=$(get_setting use_hlebios "${PLATFORM}")
 fi
 
 if [ "$USE_BIOS" = 1 ]
@@ -72,7 +84,7 @@ then
 fi
 
 #Set the cores to use
-CORES=$(get_setting "cores" "${PLATFORM}" "${ROMNAME##*/}")
+CORES=$(get_setting "cores" "${PLATFORM}" "${GAME}")
 if [ "${CORES}" = "little" ]
 then
   EMUPERF="${SLOW_CORES}"

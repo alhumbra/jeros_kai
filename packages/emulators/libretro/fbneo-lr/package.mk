@@ -4,7 +4,7 @@
 # Copyright (C) 2023 JELOS (https://github.com/JustEnoughLinuxOS)
 
 PKG_NAME="fbneo-lr"
-PKG_VERSION="6fc8060a75fd75c5b292fbef488ed8dd37c7bc34"
+PKG_VERSION="b8780c057029db8768c9a057b0bc28f9a12609d8"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="Non-commercial"
@@ -18,6 +18,7 @@ PKG_TOOLCHAIN="make"
 
 
 pre_configure_target() {
+sed -i '/ignoreCrc = false;/s//ignoreCrc = true;/g'  ./src/burner/libretro/libretro.cpp
 sed -i "s|LDFLAGS += -static-libgcc -static-libstdc++|LDFLAGS += -static-libgcc|"  ./src/burner/libretro/Makefile
 
 PKG_MAKE_OPTS_TARGET=" -C ./src/burner/libretro USE_CYCLONE=0 profile=performance"
